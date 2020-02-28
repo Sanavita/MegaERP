@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "be08499a-2320-4483-bcd3-b0f03ec17415",
+		"name": "Mega",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "205 - Usuário - Usando CDATA",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bf8d7f0d-3764-44b3-ae4f-9b852b4d2033",
+						"exec": [
+							"pm.environment.set(\"url\", \"http//srv-mega:8101\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\r\n  <soapenv:Body>\r\n    <tem:MegaIntegradorService___IntegraXML>\r\n      <tem:pPRO_IN_ID>205</tem:pPRO_IN_ID>\r\n      <tem:pUSU_IN_CODIGO>1</tem:pUSU_IN_CODIGO>\r\n      <tem:pXML>\r\n      \t<![CDATA[\r\n      \t<Usuario OPERACAO=\"I\">\r\n\t\t\t<GRU_IN_CODIGO>999</GRU_IN_CODIGO> \r\n\t\t\t<GRU_ST_NOME>Mega</GRU_ST_NOME> \r\n\t\t\t<GRU_ST_NOMECOMPLETO>Mega</GRU_ST_NOMECOMPLETO> \r\n\t\t\t<GRU_ST_SENHA>SENHA</GRU_ST_SENHA> \r\n\t\t\t<PAI_GRU_IN_CODIGO>2</PAI_GRU_IN_CODIGO> \r\n\t\t</Usuario>\r\n      ]]></tem:pXML>\r\n      <tem:pObs>Obs</tem:pObs>\r\n      <tem:pEnviaRecebe>R</tem:pEnviaRecebe>\r\n      <tem:pTransacao>0</tem:pTransacao>\r\n      <tem:pSistema>1</tem:pSistema>\r\n      <tem:pXMLHeader/>\r\n    </tem:MegaIntegradorService___IntegraXML>\r\n  </soapenv:Body>\r\n</soapenv:Envelope>"
+				},
+				"url": {
+					"raw": "{{ur}}/integrador?wsdl",
+					"host": [
+						"{{ur}}"
+					],
+					"path": [
+						"integrador"
+					],
+					"query": [
+						{
+							"key": "wsdl",
+							"value": null
+						}
+					]
+				},
+				"description": "pXML using CDATA"
+			},
+			"response": []
+		},
+		{
+			"name": "205 - Usuário - Escaped Tags XML",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e22e16c6-5527-4b49-a4ae-1fcfc1b7cbd6",
+						"exec": [
+							"pm.environment.set(\"url\", \"http//srv-mega:8101\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">\n\t<soapenv:Body>\n    <tem:MegaIntegradorService___IntegraXML>\n      <tem:pPRO_IN_ID>205</tem:pPRO_IN_ID>\n      <tem:pUSU_IN_CODIGO>1</tem:pUSU_IN_CODIGO>\n      <tem:pXML>\n      \t&lt;Usuario OPERACAO=&quot;I&quot;&gt;\n\t\t\t&lt;GRU_IN_CODIGO&gt;999&lt;/GRU_IN_CODIGO&gt; \n\t\t\t&lt;GRU_ST_NOME&gt;Mega&lt;/GRU_ST_NOME&gt; \n\t\t\t&lt;GRU_ST_NOMECOMPLETO&gt;Mega&lt;/GRU_ST_NOMECOMPLETO&gt; \n\t\t\t&lt;GRU_ST_SENHA&gt;SENHA&lt;/GRU_ST_SENHA&gt; \n\t\t\t&lt;PAI_GRU_IN_CODIGO&gt;2&lt;/PAI_GRU_IN_CODIGO&gt; \n\t\t&lt;/Usuario&gt;\n\t\t</tem:pXML>\n\t\t<tem:pObs>Obs</tem:pObs>\n\t\t<tem:pEnviaRecebe>R</tem:pEnviaRecebe>\n\t\t<tem:pTransacao>0</tem:pTransacao>\n\t\t<tem:pSistema>1</tem:pSistema>\n\t</tem:MegaIntegradorService___IntegraXML>\n\t</soapenv:Body>\n</soapenv:Envelope>"
+				},
+				"url": {
+					"raw": "{{url}}/integrador?wsdl",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"integrador"
+					],
+					"query": [
+						{
+							"key": "wsdl",
+							"value": null
+						}
+					]
+				},
+				"description": "pXML using escaped tags of the XML"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
